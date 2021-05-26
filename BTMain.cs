@@ -33,21 +33,21 @@ namespace BindTools
 			Commands.ChatCommands.Add(new Command(BTPermissions.BTool, BindToolCMD, "bindtool", "bt")
 			{
 				AllowServer = false,
-				HelpText = string.Format("Use '{0}bt help'.", TShock.Config.CommandSpecifier)
+				HelpText = string.Format("Use '{0}bt help'.", TShock.Config.Settings.CommandSpecifier)
 			});
 			Commands.ChatCommands.Add(new Command(BTPermissions.BWait, BindWaitCMD, "bindwait", "bw")
 			{
 				AllowServer = false,
-				HelpText = string.Format("Use '{0}bw help'.", TShock.Config.CommandSpecifier)
+				HelpText = string.Format("Use '{0}bw help'.", TShock.Config.Settings.CommandSpecifier)
 			});
 			Commands.ChatCommands.Add(new Command(BTPermissions.BGlobal, BindGlobalCMD, "bindglobal", "bgl")
 			{
-				HelpText = string.Format("Use '{0}bgl help'.", TShock.Config.CommandSpecifier)
+				HelpText = string.Format("Use '{0}bgl help'.", TShock.Config.Settings.CommandSpecifier)
 			});
 			Commands.ChatCommands.Add(new Command(BTPermissions.BPrefix, BindPrefixCMD, "bprefix", "bindprefix", "bpr")
 			{
 				AllowServer = false,
-				HelpText = string.Format("Use '{0}bgl help'.", TShock.Config.CommandSpecifier)
+				HelpText = string.Format("Use '{0}bgl help'.", TShock.Config.Settings.CommandSpecifier)
 			});
 			BTDatabase.DBConnect();
 		}
@@ -85,10 +85,10 @@ namespace BindTools
 			if (args.Parameters.Count == 0)
 			{
 				args.Player.SendMessage("BindTool usage:", Color.LightSalmon);
-				args.Player.SendMessage(string.Format("{0}bindtool [-flags] commands; separated; by semicolon", TShock.Config.CommandSpecifier), Color.BurlyWood);
+				args.Player.SendMessage(string.Format("{0}bindtool [-flags] commands; separated; by semicolon", TShock.Config.Settings.CommandSpecifier), Color.BurlyWood);
 				args.Player.SendMessage("This will bind those commands to the current item in hand.", Color.BurlyWood);
-				args.Player.SendMessage(string.Format("Type {0}bt help for flag info.", TShock.Config.CommandSpecifier), Color.BurlyWood);
-				args.Player.SendMessage(string.Format("Type {0}bt list for current bind list.", TShock.Config.CommandSpecifier), Color.BurlyWood);
+				args.Player.SendMessage(string.Format("Type {0}bt help for flag info.", TShock.Config.Settings.CommandSpecifier), Color.BurlyWood);
+				args.Player.SendMessage(string.Format("Type {0}bt list for current bind list.", TShock.Config.Settings.CommandSpecifier), Color.BurlyWood);
 				return;
 			}
 
@@ -101,7 +101,7 @@ namespace BindTools
 					"-p will bind item only with certain prefix",
 					"[c/aaaa00:-d will add bind to database, so it will be saved and can be used after rejoin]",
 					"You can combine flags: -spd = slot + prefix + database",
-					string.Format("[c/aaaa00:-w instead of execution will add command to queue, so you could add parameters later] (write {0}bt help wait for more info)", TShock.Config.CommandSpecifier),
+					string.Format("[c/aaaa00:-w instead of execution will add command to queue, so you could add parameters later] (write {0}bt help wait for more info)", TShock.Config.Settings.CommandSpecifier),
 					"-c will clear all commands from the item at certain slot with certain prefix",
 					"[c/aaaa00:-csp = clear any bind on item; -cs = clear binds on item with certain prefix, but any slot; -cp = clear binds on item with certain slot, but any prefix]"
 				};
@@ -114,7 +114,7 @@ namespace BindTools
 						Help = new List<string>
 						{
 							"Text format uses {Num} syntax. Parameters start from 0.",
-							string.Format("[c/aaaa00:For example ' {0}bt {0}region allow ", TShock.Config.CommandSpecifier) + "\"{0}\" " + string.Format("\"Region Name\" ' will allow you to use {0}bw Player1, {0}bw \"Player 2\", etc.]", TShock.Config.CommandSpecifier),
+							string.Format("[c/aaaa00:For example ' {0}bt {0}region allow ", TShock.Config.Settings.CommandSpecifier) + "\"{0}\" " + string.Format("\"Region Name\" ' will allow you to use {0}bw Player1, {0}bw \"Player 2\", etc.]", TShock.Config.Settings.CommandSpecifier),
 							"You need to fill all {Num} fields used in your bind command."
 						};
 					}
@@ -124,7 +124,7 @@ namespace BindTools
 						new PaginationTools.Settings
 						{
 							HeaderFormat = "Bindtools help ({0}/{1}):",
-							FooterFormat = "Type {0}bt help {{0}} for more info.".SFormat(TShock.Config.CommandSpecifier)
+							FooterFormat = "Type {0}bt help {{0}} for more info.".SFormat(TShock.Config.Settings.CommandSpecifier)
 						}
 					);
 				return;
@@ -150,7 +150,7 @@ namespace BindTools
 						new PaginationTools.Settings
 						{
 							HeaderFormat = "Current binds ({0}/{1}):",
-							FooterFormat = "Type {0}bt list {{0}} for more info.".SFormat(TShock.Config.CommandSpecifier),
+							FooterFormat = "Type {0}bt list {{0}} for more info.".SFormat(TShock.Config.Settings.CommandSpecifier),
 							NothingToDisplayString = "You do not have any binds."
 						}
 					);
@@ -254,9 +254,9 @@ namespace BindTools
 			{
 				List<string> Help = new List<string>
 				{
-					string.Format("[c/aaaa00:'{0}bindwait list' or '{0}bw list' - shows all awaiting commands]", TShock.Config.CommandSpecifier),
-					string.Format("'{0}bindwait skip <Count/\"all\">' - skips commands in queue", TShock.Config.CommandSpecifier),
-					string.Format("[c/aaaa00:'{0}bindwait \"Argument1\" \"Argument2\" \"Argument3\" ...' - executes current awaiting command with certain arguments]", TShock.Config.CommandSpecifier),
+					string.Format("[c/aaaa00:'{0}bindwait list' or '{0}bw list' - shows all awaiting commands]", TShock.Config.Settings.CommandSpecifier),
+					string.Format("'{0}bindwait skip <Count/\"all\">' - skips commands in queue", TShock.Config.Settings.CommandSpecifier),
+					string.Format("[c/aaaa00:'{0}bindwait \"Argument1\" \"Argument2\" \"Argument3\" ...' - executes current awaiting command with certain arguments]", TShock.Config.Settings.CommandSpecifier),
 					"You need to fill all argument fields."
 				};
 				PaginationTools.SendPage(args.Player, 1, Help, new PaginationTools.Settings { HeaderFormat = "Bindwait help ({0}/{1}):" });
@@ -272,7 +272,7 @@ namespace BindTools
 						new PaginationTools.Settings
 						{
 							HeaderFormat = "Binds queue ({0}/{1}):",
-							FooterFormat = "Type {0}bw list {{0}} for more info.".SFormat(TShock.Config.CommandSpecifier),
+							FooterFormat = "Type {0}bw list {{0}} for more info.".SFormat(TShock.Config.Settings.CommandSpecifier),
 							NothingToDisplayString = "You do not have any awaiting commands."
 						}
 					);
@@ -331,7 +331,7 @@ namespace BindTools
 								new PaginationTools.Settings
 								{
 									HeaderFormat = "Global binds ({0}/{1}):",
-									FooterFormat = "Type {0}bgl list b {{0}} for more info.".SFormat(TShock.Config.CommandSpecifier),
+									FooterFormat = "Type {0}bgl list b {{0}} for more info.".SFormat(TShock.Config.Settings.CommandSpecifier),
 									NothingToDisplayString = "There are currently no global binds you allowed to use."
 								}
 							);
@@ -341,14 +341,14 @@ namespace BindTools
 					{
 						List<string> Help = new List<string>
 						{
-							string.Format("{0}bgl list [page]", TShock.Config.CommandSpecifier),
+							string.Format("{0}bgl list [page]", TShock.Config.Settings.CommandSpecifier),
 						};
 						if (args.Player.HasPermission("bindtools.admin"))
 						{
 							List<string> Help2 = new List<string>
 							{
-								string.Format("{0}bgl add [Name] [ItemID] [Permission] [SlotID] [PrefixID] [Looping] [Awaiting] commands; separated; by semicolon", TShock.Config.CommandSpecifier),
-								string.Format("{0}bgl del [Name]", TShock.Config.CommandSpecifier),
+								string.Format("{0}bgl add [Name] [ItemID] [Permission] [SlotID] [PrefixID] [Looping] [Awaiting] commands; separated; by semicolon", TShock.Config.Settings.CommandSpecifier),
+								string.Format("{0}bgl del [Name]", TShock.Config.Settings.CommandSpecifier),
 								"SlotID: -1 for any; 1-10 - hotbar; 100 for cursor",
 								"PrefixID: -1 for any; Looping: true/false; Awaiting: true/false",
 							};
@@ -362,7 +362,7 @@ namespace BindTools
 								new PaginationTools.Settings
 								{
 									HeaderFormat = "BindGlobal help ({0}/{1}):",
-									FooterFormat = "Type {0}bgl help {{0}} for more info.".SFormat(TShock.Config.CommandSpecifier)
+									FooterFormat = "Type {0}bgl help {{0}} for more info.".SFormat(TShock.Config.Settings.CommandSpecifier)
 								}
 							);
 						break;
@@ -399,7 +399,7 @@ namespace BindTools
                                     args.Player.SendSuccessMessage("BindPrefix help (1/1):");
 									args.Player.SendInfoMessage("{0}bprefix add group [Name] [Permission] [AllowedPrefixes (1 3 10...)]\r\n" +
 										"{0}bprefix del group [Name]\r\n" +
-										"{0}bprefix <add/del> prefix [Name] [PrefixID]", TShock.Config.CommandSpecifier);
+										"{0}bprefix <add/del> prefix [Name] [PrefixID]", TShock.Config.Settings.CommandSpecifier);
 									return;
 								}
 						}
@@ -425,17 +425,17 @@ namespace BindTools
 					{
 						List<string> Help = new List<string>
 						{
-							string.Format("{0}bpr [PrefixID]", TShock.Config.CommandSpecifier),
-							string.Format("{0}bpr list [page]", TShock.Config.CommandSpecifier)
+							string.Format("{0}bpr [PrefixID]", TShock.Config.Settings.CommandSpecifier),
+							string.Format("{0}bpr list [page]", TShock.Config.Settings.CommandSpecifier)
 						};
 						if (args.Player.HasPermission("bindtools.admin"))
 						{
 							List<string> Help2 = new List<string>
 							{
-								string.Format("{0}bpr listgr [page]", TShock.Config.CommandSpecifier),
-								string.Format("{0}bpr add <group/g> [Name] [Permission] [AllowedPrefixes (1 3 10...)]", TShock.Config.CommandSpecifier),
-								string.Format("{0}bpr del <group/g> [Name]", TShock.Config.CommandSpecifier),
-								string.Format("{0}bpr <add/del> <prefix/p> [Name] [PrefixID]", TShock.Config.CommandSpecifier)
+								string.Format("{0}bpr listgr [page]", TShock.Config.Settings.CommandSpecifier),
+								string.Format("{0}bpr add <group/g> [Name] [Permission] [AllowedPrefixes (1 3 10...)]", TShock.Config.Settings.CommandSpecifier),
+								string.Format("{0}bpr del <group/g> [Name]", TShock.Config.Settings.CommandSpecifier),
+								string.Format("{0}bpr <add/del> <prefix/p> [Name] [PrefixID]", TShock.Config.Settings.CommandSpecifier)
 							};
 							Help.AddRange(Help2);
 						}
@@ -447,7 +447,7 @@ namespace BindTools
 								new PaginationTools.Settings
 								{
 									HeaderFormat = "BindPrefix help ({0}/{1}):",
-									FooterFormat = "Type {0}bpr help {{0}} for more info.".SFormat(TShock.Config.CommandSpecifier)
+									FooterFormat = "Type {0}bpr help {{0}} for more info.".SFormat(TShock.Config.Settings.CommandSpecifier)
 								}
 							);
 						return;

@@ -34,7 +34,7 @@ namespace BindTools
 					if (awaiting)
 					{
 						BindTools.BTPlayers[player.Index].AddCommand(commands[count]);
-						player.SendInfoMessage("Command {0} added in queue! Use '{1}bindwait' or '{1}bw' to see current awaiting command.", commands[count], TShock.Config.CommandSpecifier);
+						player.SendInfoMessage("Command {0} added in queue! Use '{1}bindwait' or '{1}bw' to see current awaiting command.", commands[count], TShock.Config.Settings.CommandSpecifier);
 					} else { Commands.HandleCommand(player, commands[count]); }
 					count++;
 					if (count >= commands.Count)
@@ -47,7 +47,7 @@ namespace BindTools
 						if (awaiting)
 						{
 							BindTools.BTPlayers[player.Index].AddCommand(cmd);
-							player.SendInfoMessage("Command {0} added in queue! Use '{1}bindwait' or '{1}bw' to see current awaiting command.", commands[count], TShock.Config.CommandSpecifier);
+							player.SendInfoMessage("Command {0} added in queue! Use '{1}bindwait' or '{1}bw' to see current awaiting command.", commands[count], TShock.Config.Settings.CommandSpecifier);
 						}
 						else { Commands.HandleCommand(player, cmd); }
 					}
