@@ -42,7 +42,7 @@ namespace BindTools
 			{
 				if (args.Parameters.Count < 9)
 				{
-					args.Player.SendErrorMessage(TShock.Config.CommandSpecifier + "bindglobal add [Name] [ItemID] [Permission] [SlotID] [PrefixID] [Looping] [Awaiting] commands; separated; by semicolon\r\n" +
+					args.Player.SendErrorMessage(TShock.Config.Settings.CommandSpecifier + "bindglobal add [Name] [ItemID] [Permission] [SlotID] [PrefixID] [Looping] [Awaiting] commands; separated; by semicolon\r\n" +
 						"SlotID: -1 for any; 1-10 - hotbar; 100 for cursor\r\n" +
 						"PrefixID: -1 for any; Looping: true/false; Awaiting: true/false");
 					return;
@@ -99,7 +99,7 @@ namespace BindTools
 			{
 				if (args.Parameters.Count != 2)
 				{
-					args.Player.SendErrorMessage(TShock.Config.CommandSpecifier + "bindglobal del [Name]");
+					args.Player.SendErrorMessage(TShock.Config.Settings.CommandSpecifier + "bindglobal del [Name]");
 					return;
 				}
 				string Name = args.Parameters[1];
@@ -128,7 +128,7 @@ namespace BindTools
 			{
 				if (args.Parameters.Count < 5)
 				{
-					args.Player.SendErrorMessage(TShock.Config.CommandSpecifier + "bprefix add group [Name] [Permission] [AllowedPrefixes (1 3 10...)]");
+					args.Player.SendErrorMessage(TShock.Config.Settings.CommandSpecifier + "bprefix add group [Name] [Permission] [AllowedPrefixes (1 3 10...)]");
 					return;
 				}
 				string Name = args.Parameters[2];
@@ -159,7 +159,7 @@ namespace BindTools
 			{
 				if (args.Parameters.Count != 3)
 				{
-					args.Player.SendErrorMessage(TShock.Config.CommandSpecifier + "bprefix del group [Name]");
+					args.Player.SendErrorMessage(TShock.Config.Settings.CommandSpecifier + "bprefix del group [Name]");
 					return;
 				}
 				string Name = args.Parameters[2];
@@ -186,7 +186,7 @@ namespace BindTools
 			bool Add = (args.Parameters[0] == "add");
 			if (args.Parameters.Count < 3)
 			{
-				args.Player.SendErrorMessage("{0}bprefix " + (Add ? "add" : "del") + " prefix [PrefixGroupName] [PrefixID]", TShock.Config.CommandSpecifier);
+				args.Player.SendErrorMessage("{0}bprefix " + (Add ? "add" : "del") + " prefix [PrefixGroupName] [PrefixID]", TShock.Config.Settings.CommandSpecifier);
 				return;
 			}
 
