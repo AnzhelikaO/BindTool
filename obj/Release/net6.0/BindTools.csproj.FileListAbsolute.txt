@@ -1,0 +1,13 @@
+C:\Users\Zachary Fahey\Documents\GitHub\BindToolFork\bin\Release\net6.0\HttpServer.dll
+C:\Users\Zachary Fahey\Documents\GitHub\BindToolFork\bin\Release\net6.0\BindTools.deps.json
+C:\Users\Zachary Fahey\Documents\GitHub\BindToolFork\bin\Release\net6.0\BindTools.dll
+C:\Users\Zachary Fahey\Documents\GitHub\BindToolFork\bin\Release\net6.0\BindTools.pdb
+C:\Users\Zachary Fahey\Documents\GitHub\BindToolFork\obj\Release\net6.0\BindTools.csproj.AssemblyReference.cache
+C:\Users\Zachary Fahey\Documents\GitHub\BindToolFork\obj\Release\net6.0\BindTools.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Zachary Fahey\Documents\GitHub\BindToolFork\obj\Release\net6.0\BindTools.csproj.CoreCompileInputs.cache
+C:\Users\Zachary Fahey\Documents\GitHub\BindToolFork\obj\Release\net6.0\BindTools.dll
+C:\Users\Zachary Fahey\Documents\GitHub\BindToolFork\obj\Release\net6.0\refint\BindTools.dll
+C:\Users\Zachary Fahey\Documents\GitHub\BindToolFork\obj\Release\net6.0\BindTools.pdb
+C:\Users\Zachary Fahey\Documents\GitHub\BindToolFork\obj\Release\net6.0\ref\BindTools.dll
+C:\Users\Zachary Fahey\Documents\GitHub\BindToolFork\bin\Release\net6.0\BindTools.runtimeconfig.json
+C:\Users\Zachary Fahey\Documents\GitHub\BindToolFork\obj\Release\net6.0\BindTools.genruntimeconfig.cache

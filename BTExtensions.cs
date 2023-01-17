@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Terraria;
+using Terraria.ID;
 using TShockAPI;
 using static BindTools.BindTools;
 
@@ -53,8 +54,8 @@ namespace BindTools
 					args.Player.SendErrorMessage("Global bind with '{0}' name already exists.", Name);
 					return;
 				}
-				if (!int.TryParse(args.Parameters[2], out int ItemID)
-					|| (ItemID < 0) || (ItemID > (Main.maxItemTypes - 1)))
+				if (!int.TryParse(args.Parameters[2], out int itemId)
+					|| (itemId < 0) || (itemId >= ItemID.Count))
 				{
 					args.Player.SendErrorMessage("Invalid ItemID!");
 					return;
@@ -89,7 +90,7 @@ namespace BindTools
 				for (int i = 0; i < Commands.Length; i++)
 				{ Commands[i] = Commands[i].TrimStart(' '); }
 
-				var GB = new BTGlobalBind(Name, ItemID, Commands, Permission,
+				var GB = new BTGlobalBind(Name, itemId, Commands, Permission,
 						((Slot == 100) ? 58 : (Slot == -1) ? -1 : (Slot - 1)), Prefix, Looping, Awaiting);
 				GlobalBinds.Add(GB);
 				BTDatabase.GBAdd(GB);
