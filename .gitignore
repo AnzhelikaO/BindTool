@@ -1,5 +1,5 @@
-*/bin/*
-*/obj/*
+bin/*
+obj/*
 
 *.suo
 *.sdf
@@ -8,4 +8,5 @@
 *.pdb
 *.mdb
 *.csproj.user
+*.editorconfig
 .vs/
