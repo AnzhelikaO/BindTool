@@ -15,7 +15,7 @@ namespace BindTools
 		{
 			foreach (BTGlobalBind gb in GlobalBinds)
 			{
-				if ((gb.ItemID == item.netID) && ((gb.Slot == -1) || (gb.Slot == Slot))
+				if ((gb.ItemID == item.type) && ((gb.Slot == -1) || (gb.Slot == Slot))
 					&& ((gb.Prefix == -1) || (gb.Prefix == item.prefix))) { return gb; }
 			}
 			return new BTGlobalBind(true);
