@@ -7,6 +7,7 @@ using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using Terraria;
 using System.Linq;
+using TShockAPI.DB.Queries;
 
 namespace BindTools
 {
@@ -38,7 +39,7 @@ namespace BindTools
 					break;
 			}
 
-			SqlTableCreator sqlcreator = new SqlTableCreator(db, db.GetSqlType() == SqlType.Sqlite ? (IQueryBuilder)new SqliteQueryCreator() : new MysqlQueryCreator());
+			SqlTableCreator sqlcreator = new SqlTableCreator(db, db.GetSqlType() == SqlType.Sqlite ? (IQueryBuilder)new SqliteQueryBuilder() : new MysqlQueryBuilder());
 
 			sqlcreator.EnsureTableStructure(new SqlTable("BindTools",
 				new SqlColumn("UserID", MySqlDbType.Int32),
@@ -108,7 +109,7 @@ namespace BindTools
 					int Prefix = reader.Get<int>("Prefix");
 					bool Looping = (reader.Get<int>("Looping") == 1);
 
-					BTools.Add(new BindTool(Item.netID, Slot, Commands, Awaiting, Looping, Prefix, true));
+					BTools.Add(new BindTool(Item.type, Slot, Commands, Awaiting, Looping, Prefix, true));
 				}
 			}
 

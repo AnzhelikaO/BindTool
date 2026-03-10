@@ -200,8 +200,8 @@ namespace BindTools
 			if (clear)
 			{
 				string _prefix = Lang.prefix[item.prefix].Value;
-				player.RemoveBindTool(item.netID, ((slot) ? -1 : args.Player.TPlayer.selectedItem), ((prefix) ? -1 : item.prefix));
-				args.Player.SendMessage(string.Format("All commands have been removed from [i:{0}]{1}{2}", item.netID,
+				player.RemoveBindTool(item.type, ((slot) ? -1 : args.Player.TPlayer.selectedItem), ((prefix) ? -1 : item.prefix));
+				args.Player.SendMessage(string.Format("All commands have been removed from [i:{0}]{1}{2}", item.type,
 					((slot) ? "" : " at " + ((args.Player.TPlayer.selectedItem > 9) ? "cursor" : "hotbar-" + (args.Player.TPlayer.selectedItem + 1)) + " slot"),
 					((prefix) ? "" : (" with " + (_prefix == "" ? "no" : _prefix) + " prefix"))), Color.BurlyWood);
 				return;
@@ -218,7 +218,7 @@ namespace BindTools
 			for (int i = 0; i < cmdlist.Count; i++)
 			{ cmdlist[i] = cmdlist[i].TrimStart(' '); }
 
-			BindTool BindTool = new BindTool(item.netID, (slot ? args.Player.TPlayer.selectedItem : -1), cmdlist, awaiting, looping, (prefix ? item.prefix : -1), database);
+			BindTool BindTool = new BindTool(item.type, (slot ? args.Player.TPlayer.selectedItem : -1), cmdlist, awaiting, looping, (prefix ? item.prefix : -1), database);
 			
 			if (BTExtensions.AnyGBMatch(BindTool) && !args.Player.HasPermission(BTPermissions.Overwrite))
 			{
@@ -501,7 +501,7 @@ namespace BindTools
 				NetMessage.SendData((int)PacketTypes.WorldInfo, args.Player.Index, -1, NetworkText.Empty);
 			}
 
-			args.Player.SendSuccessMessage("Successfully changed [i:{0}]'s prefix to {1} ({2})", args.Player.TPlayer.inventory[args.Player.TPlayer.selectedItem].netID, Prefix, Lang.prefix[Prefix].Value);
+			args.Player.SendSuccessMessage("Successfully changed [i:{0}]'s prefix to {1} ({2})", args.Player.TPlayer.inventory[args.Player.TPlayer.selectedItem].type, Prefix, Lang.prefix[Prefix].Value);
 		}
 
 		private void OnPlayerUpdate(object sender, GetDataHandlers.PlayerUpdateEventArgs args)

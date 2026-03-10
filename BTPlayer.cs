@@ -54,7 +54,7 @@ namespace BindTools
 		{
 			foreach (BindTool bt in bindTools)
 			{
-				if ((bt.item == item.netID) && ((bt.slot == -1) || (bt.slot == Slot))
+				if ((bt.item == item.type) && ((bt.slot == -1) || (bt.slot == Slot))
 					&& ((bt.prefix == -1) || (bt.prefix == item.prefix))) { return bt; }
 			}
 			return null;
@@ -103,7 +103,7 @@ namespace BindTools
 		{
 			foreach (BTGlobalBind gb in BindTools.GlobalBinds)
 			{
-				if ((gb.ItemID == item.netID) && tsPlayer.HasPermission(gb.Permission)
+				if ((gb.ItemID == item.type) && tsPlayer.HasPermission(gb.Permission)
 					&& ((gb.Slot == -1) || (gb.Slot == Slot))
 					&& ((gb.Prefix == -1) || (gb.Prefix == item.prefix))) { return gb; }
 			}
