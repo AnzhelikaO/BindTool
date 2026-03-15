@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Data;
+using Microsoft.Data.Sqlite;
 using TShockAPI;
 using TShockAPI.DB;
-using System.Data.SQLite;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using Terraria;
@@ -35,7 +35,7 @@ namespace BindTools
 
 				case "sqlite":
 					string sql = Path.Combine(TShock.SavePath, "BindTools.sqlite");
-					db = new SQLiteConnection(string.Format("uri=file://{0},Version=3", sql));
+					db = new SqliteConnection($"Data Source={sql}");
 					break;
 			}
 
